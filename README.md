@@ -19,4 +19,4 @@ Please read the project-specific documentation for contribution guidelines.
 
 ## License
 
-[Add your license information here] 
+[Add your license information here]
