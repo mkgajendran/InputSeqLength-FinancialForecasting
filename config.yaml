@@ -1,0 +1,35 @@
+# InputSeqLength-FinancialForecasting Configuration
+# ================================================
+
+# Data Download Settings
+data:
+  start_date: "2017-04-01"
+  end_date: "2025-03-31"  # null Will use current date
+  feature_columns: ["Open", "High", "Low", "Close", "Volume"]
+
+# Global Indices Configuration
+indices:
+  SP500: "^GSPC"
+  FTSE100: "^FTSE"
+  DAX40: "^GDAXI"
+  Nikkei225: "^N225"
+  ShanghaiComp: "000001.SS"
+  SENSEX: "^BSESN"
+  TSXComposite: "^GSPTSE"
+  Bovespa: "^BVSP"
+
+# Output Settings
+output:
+  excel_filename: "results/global_indices.xlsx"
+  
+# Visualization Settings
+visualization:
+  indices_trend:
+    output_dir: "results/plots"
+    output_filename: "indices_trend_analysis.pdf"
+
+# Analysis Settings  
+analysis:
+  descriptive_statistics:
+    output_dir: "results"
+    output_filename: "descriptive_statistics_closing.xlsx"
