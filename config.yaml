@@ -21,7 +21,7 @@ indices:
 # Output Settings
 output:
   excel_filename: "results/global_indices.xlsx"
-  
+
 # Visualization Settings
 visualization:
   indices_trend:
