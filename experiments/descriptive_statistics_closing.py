@@ -33,7 +33,9 @@ def analyze_descriptive_statistics():
     """Analyze descriptive statistics for closing prices of all indices."""
     
     # Create output directory if it doesn't exist
-    Path(OUTPUT_DIR).mkdir(parents=True, exist_ok=True)
+    output_path = Path(OUTPUT_DIR)
+    output_path.mkdir(parents=True, exist_ok=True)
+    print(f"Output directory: {output_path.absolute()}")
     
     # Read Excel file and get all sheet names
     excel_file = pd.ExcelFile(EXCEL_FILE)
@@ -73,10 +75,10 @@ def analyze_descriptive_statistics():
     stats_df = pd.DataFrame(stats_data)
     
     # Save to Excel
-    output_path = Path(OUTPUT_DIR) / OUTPUT_FILE
-    stats_df.to_excel(output_path, index=False, sheet_name='Descriptive_Statistics')
+    output_file_path = output_path / OUTPUT_FILE
+    stats_df.to_excel(output_file_path, index=False, sheet_name='Descriptive_Statistics')
     
-    print(f"\n✅ Saved descriptive statistics to: {output_path}")
+    print(f"\n✅ Saved descriptive statistics to: {output_file_path}")
     print(f"📊 Total indices analyzed: {len(sheet_names)}")
     
     # Display summary

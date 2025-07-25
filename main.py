@@ -13,6 +13,7 @@ sys.path.append(str(project_root))
 from data.downloader import download_indices_data, load_config
 from visualization.indices_trend import plot_indices_trends
 from experiments.descriptive_statistics_closing import analyze_descriptive_statistics
+from experiments.train_multisheet_forecasting import MultisheetTrainer
 
 
 # ==============================================================
@@ -39,6 +40,13 @@ def main():
     print("Generating Descriptive Statistics...")
     print("="*60)
     analyze_descriptive_statistics()
+    
+    # Run multisheet forecasting training
+    print("\n" + "="*60)
+    print("Running Multisheet Forecasting Training...")
+    print("="*60)
+    trainer = MultisheetTrainer()
+    trainer.train_all_models()
     
     print("\n🎯 Project execution completed successfully!")
 

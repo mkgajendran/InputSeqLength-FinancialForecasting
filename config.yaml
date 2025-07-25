@@ -31,5 +31,47 @@ visualization:
 # Analysis Settings  
 analysis:
   descriptive_statistics:
-    output_dir: "results"
+    output_dir: "results/metrics"
     output_filename: "descriptive_statistics_closing.xlsx"
+
+# Model Settings
+models:
+  lstm:
+    past_steps: 60
+    batch_size: 256
+    epochs: 100
+    dropout: 0.20
+    learning_rate: 0.001
+    lstm_units_1: 128
+    lstm_units_2: 64
+    dense_units: 32
+    
+  gru:
+    past_steps: 60
+    batch_size: 256
+    epochs: 100
+    dropout: 0.20
+    learning_rate: 0.0005  # LR/2 for GRU
+    gru_units_1: 128
+    gru_units_2: 64
+    dense_units: 32
+
+# Experiment Settings
+experiments:
+  multisheet_forecasting:
+    train_split: 0.70
+    val_split: 0.15
+    test_split: 0.15
+    feature_columns: ["Open", "High", "Low", "Close", "Volume"]
+    target_engineering: "log_ret"  # log return
+    seed: 42
+    output_dir: "results"
+    plot_filename: "multisheet_forecasts.pdf"
+    metrics_filename: "multisheet_test_metrics.csv"
+    early_stopping_patience: 10
+    save_models: true
+    models_dir: "results/models"
+    device_optimization:
+      auto_detect_device: true
+      prefer_gpu: true
+      cpu_cores_to_reserve: 1  # Reserve 1 core for system when using CPU
