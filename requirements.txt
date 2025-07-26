@@ -5,8 +5,12 @@ yfinance>=0.2.0
 openpyxl>=3.0.0
 pyyaml>=6.0
 
+# Deep Learning - PyTorch (GPU preferred, CPU fallback)
+torch>=2.0.0
+torchvision>=0.15.0
+torchaudio>=2.0.0
+
 # Machine Learning
-tensorflow>=2.10.0
 scikit-learn>=1.1.0
 
 # Visualization
@@ -17,5 +21,5 @@ seaborn>=0.11.0
 jupyter>=1.0.0
 ipykernel>=6.0.0
 
-# Optional: GPU support
-# tensorflow-gpu>=2.10.0
+# Note: PyTorch will automatically use GPU if CUDA is available
+# For explicit GPU support, install: pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118

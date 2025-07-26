@@ -25,10 +25,10 @@ class LSTMModelPyTorch(nn.Module):
         with open(config_path, 'r') as file:
             return yaml.safe_load(file)
     
-    def build_model(self, n_features, device=None):
+    def build_model(self, n_features, device=None, past_steps=None):
         """Build LSTM model architecture."""
         self.n_features = n_features
-        self.past_steps = self.model_config['past_steps']
+        self.past_steps = past_steps if past_steps is not None else self.model_config['past_steps']
         
         # Set device
         if device is not None:

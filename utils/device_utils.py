@@ -86,24 +86,28 @@ class DeviceManager:
         """Create PyTorch DataLoader with device-specific optimization."""
         if batch_size is None:
             batch_size = self.get_optimal_batch_size()
-            
-        X_tensor = torch.FloatTensor(X).to(self.device)
-        y_tensor = torch.FloatTensor(y).to(self.device)
-        dataset = TensorDataset(X_tensor, y_tensor)
         
         # Device-specific optimization
         if self.device.type == 'cuda':
-            # NVIDIA GPU optimization
+            # NVIDIA GPU optimization - keep tensors on CPU for pin_memory
+            X_tensor = torch.FloatTensor(X)
+            y_tensor = torch.FloatTensor(y)
             num_workers = min(4, os.cpu_count() // 2)
             pin_memory = True
         elif self.device.type == 'mps':
             # Apple Silicon optimization
+            X_tensor = torch.FloatTensor(X).to(self.device)
+            y_tensor = torch.FloatTensor(y).to(self.device)
             num_workers = 0  # MPS works better with num_workers=0
             pin_memory = False
         else:
             # CPU optimization
+            X_tensor = torch.FloatTensor(X)
+            y_tensor = torch.FloatTensor(y)
             num_workers = min(4, max(1, torch.get_num_threads() // 2))
             pin_memory = False
+        
+        dataset = TensorDataset(X_tensor, y_tensor)
         
         return DataLoader(
             dataset, 
