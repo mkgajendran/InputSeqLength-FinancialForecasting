@@ -1,0 +1,25 @@
+# Core dependencies
+pandas>=1.5.0
+numpy>=1.21.0
+yfinance>=0.2.0
+openpyxl>=3.0.0
+pyyaml>=6.0
+
+# Deep Learning - PyTorch (GPU preferred, CPU fallback)
+torch>=2.0.0
+torchvision>=0.15.0
+torchaudio>=2.0.0
+
+# Machine Learning
+scikit-learn>=1.1.0
+
+# Visualization
+matplotlib>=3.5.0
+seaborn>=0.11.0
+
+# Development
+jupyter>=1.0.0
+ipykernel>=6.0.0
+
+# Note: PyTorch will automatically use GPU if CUDA is available
+# For explicit GPU support, install: pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
